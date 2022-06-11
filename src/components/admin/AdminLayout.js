@@ -1,6 +1,7 @@
 import {Link, Route, Routes} from "react-router-dom";
 import MovieIndex from "./movie/MovieIndex";
 import MovieCreate from "./movie/MovieCreate";
+import MovieUpdate from "./movie/MovieUpdate";
 
 function AdminLayout() {
 
@@ -49,6 +50,7 @@ function AdminLayout() {
               <Routes>
                 <Route path='movies' element={<MovieIndex />} />
                 <Route path='movies/create' element={<MovieCreate />} />
+                <Route path='movies/update/:movieID' element={<MovieUpdate />} />
               </Routes>
             </div>
           </main>

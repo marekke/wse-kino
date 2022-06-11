@@ -1,11 +1,15 @@
 import {createReducer} from "@reduxjs/toolkit";
-import {movieCreated} from "./actions";
+import {movieCreated, movieUpdated} from "./actions";
 
-const initialState = [];
+const initialState = {};
 
 export default createReducer(initialState, {
   [movieCreated]: (state, action) => {
-    state.push(action.payload);
+    state[action.payload.id] = action.payload;
+  },
+
+  [movieUpdated]: (state, action) => {
+    state[action.payload.id] = action.payload;
   }
 })
 

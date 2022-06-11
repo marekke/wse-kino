@@ -4,7 +4,12 @@ import {connect} from "react-redux";
 function MovieIndex(props) {
 
   const movies = [];
-  props.movies.forEach(movie => movies.push(<li className="list-group-item">{movie.title} <span className="float-end">{movie.duration}</span></li>))
+  Object.keys(props.movies).forEach(movieID => movies.push(
+    <li key={movieID} className="list-group-item">
+      <Link to={`update/${movieID}`}>{props.movies[movieID].title}</Link>
+      <span className="float-end">{props.movies[movieID].duration}</span>
+    </li>
+  ))
 
   return (
     <>

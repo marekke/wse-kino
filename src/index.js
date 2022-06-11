@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import rootReducer from "./redux";
 import {configureStore} from "@reduxjs/toolkit";
 import {Provider} from "react-redux";
+import thunk from "redux-thunk";
 
 const STATE_NAME = 'KINO_DB';
 
@@ -36,7 +37,8 @@ function saveToLocalStorage(state) {
 const store = configureStore({
   reducer: rootReducer,
   devTools: process.env.NODE_ENV !== 'production',
-  preloadedState: loadFromLocalStorage()
+  preloadedState: loadFromLocalStorage(),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 })
 
 store.subscribe(() => saveToLocalStorage(store.getState()));

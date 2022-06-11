@@ -1,17 +1,20 @@
 import {useState} from "react";
-import {movieCreated} from "../../../redux/movie/actions";
+import {createMovie} from "../../../redux/movie/actions";
 import {connect} from "react-redux";
+import {useNavigate} from "react-router-dom";
 
 function MovieCreate(props) {
   const [title, setTitle] = useState('');
   const [duration, setDuration] = useState(0);
+  const navigate = useNavigate();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.movieCreated({
+    props.createMovie({
       title,
       duration
     });
+    navigate('/admin/movies')
   }
 
   return (
@@ -45,7 +48,7 @@ function MovieCreate(props) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  movieCreated: (data) => dispatch(movieCreated(data))
+  createMovie: (data) => dispatch(createMovie(data))
 })
 
 export default connect(null, mapDispatchToProps)(MovieCreate)
