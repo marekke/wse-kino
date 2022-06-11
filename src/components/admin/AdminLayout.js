@@ -2,6 +2,9 @@ import {Link, Route, Routes} from "react-router-dom";
 import MovieIndex from "./movie/MovieIndex";
 import MovieCreate from "./movie/MovieCreate";
 import MovieUpdate from "./movie/MovieUpdate";
+import ScreenRoomIndex from "./screenRoom/ScreenRoomIndex";
+import ScreenRoomCreate from "./screenRoom/ScreenRoomCreate";
+import ScreenRoomUpdate from "./screenRoom/ScreenRoomUpdate";
 
 function AdminLayout() {
 
@@ -33,6 +36,9 @@ function AdminLayout() {
                   <Link to="/admin/movies" className="nav-link">Filmy</Link>
                 </li>
                 <li className="nav-item">
+                  <Link to="/admin/screen-rooms" className="nav-link">Sale kinowe</Link>
+                </li>
+                <li className="nav-item">
                   <a className="nav-link" href="#">
                     Seanse
                   </a>
@@ -51,6 +57,9 @@ function AdminLayout() {
                 <Route path='movies' element={<MovieIndex />} />
                 <Route path='movies/create' element={<MovieCreate />} />
                 <Route path='movies/update/:movieID' element={<MovieUpdate />} />
+                <Route path='screen-rooms' element={<ScreenRoomIndex />} />
+                <Route path='screen-rooms/create' element={<ScreenRoomCreate />} />
+                <Route path='screen-rooms/update/:screenRoomID' element={<ScreenRoomUpdate />} />
               </Routes>
             </div>
           </main>

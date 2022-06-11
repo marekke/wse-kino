@@ -1,10 +1,12 @@
-import movieRedcuser from "./movie/reducers";
 import appReducer from "./app/reducers";
+import movieReducer from "./movie/reducers";
+import screenRoomReducer from "./screenRoom/reducers";
 import {combineReducers} from "@reduxjs/toolkit";
 
 const combinedReducers = combineReducers({
   app: appReducer,
-  movie: movieRedcuser,
+  movie: movieReducer,
+  screenRoom: screenRoomReducer,
 });
 
 const rootReducer = (state, action) => {
