@@ -48,8 +48,8 @@ export default function ShowIndex() {
               Ilość miejsc
             </th>
             <th>Czas trwania</th>
-            <th></th>
-            <th></th>
+            <th>Data start</th>
+            <th>Data koniec</th>
           </tr>
         </thead>
         <tbody>
