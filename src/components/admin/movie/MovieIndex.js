@@ -1,15 +1,17 @@
 import {Link} from "react-router-dom";
-import {connect} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {removeMovie} from "../../../redux/movie/actions";
+import {Trash} from "react-bootstrap-icons";
 
-function MovieIndex(props) {
+function MovieIndex() {
+  const dispatch = useDispatch();
+  const movies = useSelector((state) => state.movie);
 
-  const movies = [];
-  Object.keys(props.movies).forEach(movieID => movies.push(
-    <li key={movieID} className="list-group-item">
-      <Link to={`update/${movieID}`}>{props.movies[movieID].title}</Link>
-      <span className="float-end">{props.movies[movieID].duration}</span>
-    </li>
-  ))
+  const moviesElements = Object.values(movies).map(movie => <tr key={movie.id}>
+    <td>{movie.title}</td>
+    <td>{movie.duration}</td>
+    <td><Trash onClick={() => dispatch(removeMovie(movie.id))} /></td>
+  </tr>);
 
   return (
     <>
@@ -21,15 +23,19 @@ function MovieIndex(props) {
         </Link>
       </p>
 
-      <ul className="list-group mt-5">
-        {movies}
-      </ul>
+      <table className={'table'}>
+        <thead>
+          <tr>
+            <th>Nazwa</th>
+            <th>Czas trwania</th>
+          </tr>
+        </thead>
+        <tbody>
+          {moviesElements}
+        </tbody>
+      </table>
     </>
   );
 }
 
-const mapStateToProps = state => ({
-  movies: state.movie
-});
-
-export default connect(mapStateToProps)(MovieIndex);
+export default MovieIndex
