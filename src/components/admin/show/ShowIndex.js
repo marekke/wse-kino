@@ -13,7 +13,7 @@ export default function ShowIndex() {
 
   const showsElements = Object.keys(shows).map(id =>
     <tr key={id}>
-      <td>{shows[id].movie.title}</td>
+      <td><Link to={`view/${id}`}>{shows[id].movie.title}</Link></td>
       <td>{shows[id].screenRoom.number}</td>
       <td>{Object.keys(shows[id].seats).length}</td>
       <td>{shows[id].movie.duration} min</td>

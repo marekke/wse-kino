@@ -8,6 +8,7 @@ import ScreenRoomUpdate from "./screenRoom/ScreenRoomUpdate";
 import ShowIndex from "./show/ShowIndex";
 import ShowCreate from "./show/ShowCreate";
 import Error from "../app/Error";
+import ShowView from "./show/ShowView";
 
 function AdminLayout() {
 
@@ -64,6 +65,7 @@ function AdminLayout() {
                 <Route path='screen-rooms/update/:screenRoomID' element={<ScreenRoomUpdate />} />
                 <Route path='shows' element={<ShowIndex />} />
                 <Route path='shows/create' element={<ShowCreate />} />
+                <Route path='shows/view/:showID' element={<ShowView />} />
               </Routes>
             </div>
           </main>

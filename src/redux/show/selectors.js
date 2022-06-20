@@ -1,5 +1,15 @@
 import moment from "moment/moment";
 
+export const getShowByID = (state, showID) => state.show[showID];
+
+export const getShowSeatsStatistics = (state, showID) => {
+  const show = getShowByID(state, showID);
+  const available = Object.keys(show.seats).length;
+  const reserved = Object.values(show.seats).filter(seat => seat !== null).length;
+
+  return [available, reserved];
+}
+
 export const getShowsByScreenRoomID = (state, screenRoomID) =>
   Object.values(state.show).filter(show => show.screenRoomID === screenRoomID);
 
