@@ -6,6 +6,7 @@ import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
 import AdminLayout from "./components/admin/AdminLayout";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "react-datetime/css/react-datetime.css";
 import rootReducer from "./redux";
 import {configureStore} from "@reduxjs/toolkit";
 import {Provider} from "react-redux";

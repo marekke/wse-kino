@@ -5,6 +5,8 @@ import MovieUpdate from "./movie/MovieUpdate";
 import ScreenRoomIndex from "./screenRoom/ScreenRoomIndex";
 import ScreenRoomCreate from "./screenRoom/ScreenRoomCreate";
 import ScreenRoomUpdate from "./screenRoom/ScreenRoomUpdate";
+import ShowIndex from "./show/ShowIndex";
+import ShowCreate from "./show/ShowCreate";
 
 function AdminLayout() {
 
@@ -39,9 +41,7 @@ function AdminLayout() {
                   <Link to="/admin/screen-rooms" className="nav-link">Sale kinowe</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Seanse
-                  </a>
+                  <Link to="/admin/shows" className="nav-link">Seanse</Link>
                 </li>
               </ul>
             </div>
@@ -60,6 +60,8 @@ function AdminLayout() {
                 <Route path='screen-rooms' element={<ScreenRoomIndex />} />
                 <Route path='screen-rooms/create' element={<ScreenRoomCreate />} />
                 <Route path='screen-rooms/update/:screenRoomID' element={<ScreenRoomUpdate />} />
+                <Route path='shows' element={<ShowIndex />} />
+                <Route path='shows/create' element={<ShowCreate />} />
               </Routes>
             </div>
           </main>
