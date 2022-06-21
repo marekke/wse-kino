@@ -50,7 +50,7 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App/>}/>
+          <Route path="/*" element={<App/>}/>
           <Route path="/admin/*" element={<AdminLayout/>}/>
         </Routes>
       </BrowserRouter>

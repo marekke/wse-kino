@@ -43,3 +43,52 @@ export const getActiveShowsByMovieID = (state, movieID) => {
 
   return result;
 }
+
+export const getRepertoire = (state) => {
+  const shows = getShows(state);
+  const result = {};
+
+  function compare(a, b) {
+    if (a.dateStart < b.dateStart) {
+      return -1;
+    }
+
+    if (a.dateStart > b.dateStart) {
+      return 1;
+    }
+
+    return 0;
+  }
+
+  shows.sort(compare);
+
+  shows.forEach(show => {
+    if (moment().isAfter(show.dateEnd)) {
+      return;
+    }
+
+    const dateStart = moment(show.dateStart);
+    const date = dateStart.format('YYYY-MM-DD');
+
+    if (result.hasOwnProperty(date) === false) {
+      result[date] = {};
+    }
+
+    if (result[date].hasOwnProperty(show.movieID) === false) {
+      result[date][show.movieID] = {
+        movieID: show.movieID,
+        movie: show.movie.title,
+        duration: show.movie.duration,
+        shows: [],
+      };
+    }
+
+
+    result[date][show.movieID].shows.push({
+      showID: show.id,
+      timeStart: dateStart.format('HH:mm')
+    });
+  });
+
+  return result;
+}
