@@ -11,5 +11,13 @@ export function getRouteName(pathname) {
     return 'Seanse';
   }
 
+  if (pathname.startsWith('/show')) {
+    return 'Seans';
+  }
+
+  if (pathname === '/') {
+    return 'Repertuar';
+  }
+
   return 'Kino';
 }

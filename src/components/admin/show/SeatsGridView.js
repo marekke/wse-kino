@@ -4,7 +4,13 @@ const seatCardStyle = {
 };
 
 export default function SeatsGridView(props) {
-  const {seats} = props;
+  const {seats, onSeatClick} = props;
+
+  function handleSeatClick(seatID) {
+    if (onSeatClick !== undefined) {
+      onSeatClick(seatID)
+    }
+  }
 
   const seatsCards = Object.keys(seats).map(seatID => {
       const bgColor = seats[seatID] !== null ? 'bg-secondary' : 'bg-primary';
@@ -12,15 +18,16 @@ export default function SeatsGridView(props) {
       return (
         <div className="col-1" key={seatID}>
           <div className={`card p-1 text-center d-flex aligns-items-center justify-content-center ${bgColor}`}
-               style={seatCardStyle}>
+               style={seatCardStyle}
+               onClick={() => handleSeatClick(seatID)}
+               role={`${seats[seatID] === null ? 'button' : ''}`}
+          >
             {seatID}
           </div>
         </div>
       );
     }
   );
-
-  const numberColumns = seatsCards.length > 40 ? 20 : 10;
 
   return (
     <div className={`row row-cols-8 g-4`}>

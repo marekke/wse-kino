@@ -5,6 +5,7 @@ import {getScreenRoomByID} from "../screenRoom/selectors";
 
 export const showCreated = createAction('show/created');
 export const showRemoved = createAction('show/removed');
+export const showTicketBought = createAction('show/ticket/bought');
 
 export const createShow = (payload) => (dispatch, getState) => {
   payload.id = generateIDForEntity('show', getState());
@@ -37,4 +38,15 @@ export const createShow = (payload) => (dispatch, getState) => {
 
 export const removeShow = (showID) => (dispatch, getState) => {
   dispatch(showRemoved(showID));
+}
+
+export const buyTicket = (payload) => (dispatch, getState) => {
+  const {showID, seatID} = payload;
+  const ticketID = (Math.random() + 1).toString(36).substring(7);
+
+  dispatch(showTicketBought({
+    showID,
+    seatID,
+    ticketID
+  }))
 }

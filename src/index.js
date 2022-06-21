@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import AdminLayout from "./components/admin/AdminLayout";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-datetime/css/react-datetime.css";
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import rootReducer from "./redux";
 import {configureStore} from "@reduxjs/toolkit";
 import {Provider} from "react-redux";

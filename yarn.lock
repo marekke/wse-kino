@@ -7268,6 +7268,11 @@ react-bootstrap@^2.4.0:
     uncontrollable "^7.2.1"
     warning "^4.0.3"
 
+react-confirm-alert@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/react-confirm-alert/-/react-confirm-alert-3.0.2.tgz#a64eb6ab1a82891314d20e03a1a39ad39d96e8fa"
+  integrity sha512-4yjYlhURDc1P6c/9A20C0w4EHx9kik9kHjjgmuIGD0F5sSQcmSstU1qwPrkFL3gJaMKWunckEtTw/7cARW3ZFg==
+
 react-datetime@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/react-datetime/-/react-datetime-3.1.1.tgz#adc346efda47653cfff9259c979f03f56106e48c"

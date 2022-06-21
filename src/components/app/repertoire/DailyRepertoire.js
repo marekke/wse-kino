@@ -5,8 +5,8 @@ export default function DailyRepertoire(props) {
   const {repertoire, date} = props;
 
   const movies = Object.values(repertoire).map(movie => {
-    const shows = movie.shows.map(show => (
-        <Link key={show.id + movie.movieID} to={`/admin/movies/update/${show.id}`} className={'me-2'}>
+    const shows = movie.shows.map((show, index) => (
+        <Link key={index} to={`show/${show.showID}`} className={'me-2'}>
           <span className={'badge bg-light text-dark'} style={{'fontSize': '14px'}}>{show.timeStart}</span>
         </Link>
       )
