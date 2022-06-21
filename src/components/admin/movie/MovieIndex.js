@@ -1,23 +1,28 @@
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {removeMovie} from "../../../redux/movie/actions";
-import {Trash} from "react-bootstrap-icons";
+import {Pencil, Trash} from "react-bootstrap-icons";
+import {getMovies} from "../../../redux/movie/selectors";
 
 function MovieIndex() {
   const dispatch = useDispatch();
-  const movies = useSelector((state) => state.movie);
+  const movies = useSelector(getMovies);
 
-  const moviesElements = Object.values(movies).map(movie => <tr key={movie.id}>
+  const moviesElements = movies.map((movie, index) => <tr key={movie.id}>
+    <td>{index + 1}</td>
     <td>{movie.title}</td>
     <td>{movie.duration}</td>
-    <td><Trash onClick={() => dispatch(removeMovie(movie.id))} /></td>
+    <td className={'text-end'}>
+      <Link to={`/admin/movies/update/${movie.id}`} className={'me-2'}><Pencil/></Link>
+      <Trash role={'button'} className={'text-danger'} onClick={() => dispatch(removeMovie(movie.id))}/>
+    </td>
   </tr>);
 
   return (
     <>
       <p className="text-end">
         <Link to="/admin/movies/create">
-          <button className="btn btn-danger">
+          <button className="btn btn-outline-primary">
             Dodaj nowy film
           </button>
         </Link>
@@ -25,13 +30,15 @@ function MovieIndex() {
 
       <table className={'table'}>
         <thead>
-          <tr>
-            <th>Nazwa</th>
-            <th>Czas trwania</th>
-          </tr>
+        <tr className={'table-secondary'}>
+          <th>#</th>
+          <th>Nazwa</th>
+          <th>Czas trwania</th>
+          <th></th>
+        </tr>
         </thead>
         <tbody>
-          {moviesElements}
+        {moviesElements}
         </tbody>
       </table>
     </>

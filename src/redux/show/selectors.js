@@ -1,5 +1,6 @@
 import moment from "moment/moment";
 
+export const getShows = (state) => Object.values(state.show);
 export const getShowByID = (state, showID) => state.show[showID];
 
 export const getShowSeatsStatistics = (state, showID) => {

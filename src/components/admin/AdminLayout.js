@@ -1,4 +1,4 @@
-import {Link, Route, Routes} from "react-router-dom";
+import {Link, NavLink, Route, Routes, useLocation} from "react-router-dom";
 import MovieIndex from "./movie/MovieIndex";
 import MovieCreate from "./movie/MovieCreate";
 import MovieUpdate from "./movie/MovieUpdate";
@@ -9,8 +9,10 @@ import ShowIndex from "./show/ShowIndex";
 import ShowCreate from "./show/ShowCreate";
 import Error from "../app/Error";
 import ShowView from "./show/ShowView";
+import {getRouteName} from "../../router/Helper";
 
 function AdminLayout() {
+  const location = useLocation();
 
   return (
     <>
@@ -31,19 +33,18 @@ function AdminLayout() {
             <div className="position-sticky pt-3">
               <ul className="nav flex-column">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
-                    <span data-feather="home"></span>
+                  <a className="nav-link" aria-current="page" href="#">
                     Pulpit
                   </a>
                 </li>
                 <li className="nav-item">
-                  <Link to="/admin/movies" className="nav-link">Filmy</Link>
+                  <NavLink to="/admin/movies" className="nav-link">Filmy</NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/admin/screen-rooms" className="nav-link">Sale kinowe</Link>
+                  <NavLink to="/admin/screen-rooms" className="nav-link">Sale kinowe</NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/admin/shows" className="nav-link">Seanse</Link>
+                  <NavLink to="/admin/shows" className="nav-link">Seanse</NavLink>
                 </li>
               </ul>
             </div>
@@ -52,7 +53,7 @@ function AdminLayout() {
           <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div
               className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              <h1 className="h2">Dashboard</h1>
+              <h1 className="h2">{getRouteName(location.pathname)}</h1>
             </div>
             <Error />
             <div>

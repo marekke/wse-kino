@@ -1,29 +1,50 @@
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+import {getScreenRooms} from "../../../redux/screenRoom/selectors";
+import {Pencil, Trash} from "react-bootstrap-icons";
 
 export default function ScreenRoomIndex() {
-  const screenRooms = useSelector((state) => state.screenRoom);
+  const screenRooms = useSelector(getScreenRooms);
 
-  const screenRoomsElements = Object.keys(screenRooms).map(id =>
-    <li key={id} className="list-group-item">
-      <Link to={`update/${id}`}>{screenRooms[id].number}</Link>
-      <span className="float-end">{screenRooms[id].capacity}</span>
-    </li>
+  const screenRoomsElements = screenRooms.map((screenRoom, index) =>
+    <tr key={screenRoom.id}>
+      <td>{index + 1}</td>
+      <td>
+        {screenRoom.number}
+      </td>
+      <td>
+        {screenRoom.capacity}
+      </td>
+      <td className={'text-end'}>
+        <Link to={`update/${screenRoom.id}`} className={'me-2'}><Pencil/></Link>
+        <Trash role={'button'} className={'text-danger'}/>
+      </td>
+    </tr>
   );
 
   return (
     <>
       <p className="text-end">
         <Link to="/admin/screen-rooms/create">
-          <button className="btn btn-primary">
+          <button className="btn btn-outline-primary">
             Dodaj salę kinową
           </button>
         </Link>
       </p>
 
-      <ul className="list-group mt-5">
+      <table className={'table'}>
+        <thead>
+        <tr className={'table-secondary'}>
+          <th>#</th>
+          <th>Numer</th>
+          <th>Ilość miejsc</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
         {screenRoomsElements}
-      </ul>
+        </tbody>
+      </table>
     </>
   );
 }
