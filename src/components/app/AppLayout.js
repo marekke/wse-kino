@@ -8,9 +8,6 @@ import {getRouteName} from "../../router/Helper";
 function AppLayout() {
   const location = useLocation();
 
-  console.log(location)
-
-
   return (
     <>
       <nav className="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
