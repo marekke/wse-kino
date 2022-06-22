@@ -6,7 +6,7 @@ export default function DailyRepertoire(props) {
 
   const movies = Object.values(repertoire).map(movie => {
     const shows = movie.shows.map((show, index) => (
-        <Link key={index} to={`show/${show.showID}`} className={'me-2'}>
+        <Link key={index} to={`/show/${show.showID}`} className={'me-2'}>
           <span className={'badge bg-light text-dark'} style={{'fontSize': '14px'}}>{show.timeStart}</span>
         </Link>
       )
@@ -14,8 +14,8 @@ export default function DailyRepertoire(props) {
 
     return (
       <tr key={movie.movieID}>
-        <td style={{'width': '500px'}}>{movie.movie}</td>
-        <td style={{'width': '150px'}}>{movie.duration} min</td>
+        <td style={{'width': '40%'}}><Link className={'text-decoration-none fw-bold'} to={`movie/${movie.movieID}`}>{movie.movie}</Link></td>
+        <td style={{'width': '15%'}}>{movie.duration} min</td>
         <td>{shows}</td>
       </tr>
     );

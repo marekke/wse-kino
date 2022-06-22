@@ -44,8 +44,21 @@ export const getActiveShowsByMovieID = (state, movieID) => {
   return result;
 }
 
+
+export const getShowsByMovieID = (state, movieID) =>
+  getShows(state).filter(show => show.movieID === parseInt(movieID));
+
 export const getRepertoire = (state) => {
   const shows = getShows(state);
+  return prepareRepertoire(shows);
+}
+
+export const getRepertoireForMovieByID = (state, movieID) => {
+  const shows = getShowsByMovieID(state, movieID);
+  return prepareRepertoire(shows);
+}
+
+const prepareRepertoire = (shows) => {
   const result = {};
 
   function compare(a, b) {
