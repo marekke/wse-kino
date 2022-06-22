@@ -20,7 +20,7 @@ export default function DailyRepertoire(props) {
     return (
       <tr key={movie.movieID}>
         <td style={{'width': '40%'}}><Link className={'text-decoration-none fw-bold'}
-                                           to={`movie/${movie.movieID}`}>{movie.movie}</Link></td>
+                                           to={`/movie/${movie.movieID}`}>{movie.movie}</Link></td>
         <td style={{'width': '15%'}}>{movie.duration} min</td>
         <td>{shows}</td>
       </tr>

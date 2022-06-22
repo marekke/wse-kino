@@ -18,7 +18,7 @@ export default function MovieView(props) {
     <div key={date} className={'mb-3'}>
       <div className={'d-flex'}>
         <h5>{date}</h5>
-        <h5 className={'ms-auto text-muted'}>{statistics[date]} / {maximumPopularity}</h5>
+        <h5 className={'ms-auto text-muted'}>{statistics[date]}</h5>
       </div>
       <ProgressBar striped variant={'success'} now={statistics[date]} max={maximumPopularity}/>
     </div>

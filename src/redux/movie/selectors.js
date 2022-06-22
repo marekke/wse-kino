@@ -16,7 +16,7 @@ export const getStatistcForMovieByID = (state, id) => {
       result[date] = 0;
     }
 
-    result[date]++;
+    result[date] = result[date] + Object.values(show.seats).filter(seat => seat !== null).length;
   })
 
   return result;
