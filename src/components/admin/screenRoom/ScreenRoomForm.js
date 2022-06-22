@@ -34,7 +34,7 @@ export default function ScreenRoomForm(props) {
       </div>
 
       <div className="mb-3">
-        <button type="submit" className="btn btn-success">Dodaj!</button>
+        <button type="submit" className="btn btn-success">Zapisz</button>
       </div>
     </form>
   );

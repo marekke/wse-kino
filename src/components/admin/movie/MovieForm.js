@@ -3,8 +3,8 @@ import {checkIfIsInteger} from "../../../utils/Helper";
 import FormErrors from "../../common/show/FormErrors";
 
 export default function MovieForm(props) {
-  const [title, setTitle] = useState('');
-  const [duration, setDuration] = useState(0);
+  const [title, setTitle] = useState(props.title || '');
+  const [duration, setDuration] = useState(props.duration || 0);
   const [errors, setErrors] = useState([]);
 
   function handleSubmit(e) {
@@ -45,6 +45,7 @@ export default function MovieForm(props) {
           className="form-control"
           placeholder="Tytuł"
           onChange={e => setTitle(e.target.value)}
+          value={title}
         />
       </div>
 
@@ -54,11 +55,14 @@ export default function MovieForm(props) {
           type="text"
           className="form-control"
           placeholder="Czas trwania"
-          onChange={e => setDuration(e.target.value)}/>
+          onChange={e => setDuration(e.target.value)}
+          value={duration}
+        />
+
       </div>
 
       <div className="mb-3 text-end">
-        <button type="submit" className="btn btn-success">Dodaj!</button>
+        <button type="submit" className="btn btn-success">Zapisz</button>
       </div>
     </form>
   );

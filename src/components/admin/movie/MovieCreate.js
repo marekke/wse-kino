@@ -1,13 +1,14 @@
 import {createMovie} from "../../../redux/movie/actions";
-import {connect} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import MovieForm from "./MovieForm";
 
-function MovieCreate(props) {
+export default function MovieCreate() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (formData) => {
-    props.createMovie(formData);
+    dispatch(createMovie(formData))
     navigate('/admin/movies')
   }
 
@@ -17,10 +18,3 @@ function MovieCreate(props) {
     </>
   );
 }
-
-const mapDispatchToProps = (dispatch) => ({
-  createMovie: (data) => dispatch(createMovie(data))
-})
-
-export default connect(null, mapDispatchToProps)(MovieCreate)
-

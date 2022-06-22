@@ -95,7 +95,7 @@ export default function ShowForm(props) {
       </div>
 
       <div className="mb-3 text-end">
-        <button type="submit" className="btn btn-success">Dodaj!</button>
+        <button type="submit" className="btn btn-success">Zapisz</button>
       </div>
     </form>
   );

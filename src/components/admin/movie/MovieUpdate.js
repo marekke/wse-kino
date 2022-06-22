@@ -1,61 +1,28 @@
-import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getMovieByID} from "../../../redux/movie/selectors";
 import {useNavigate, useParams} from "react-router-dom";
 import {updateMovie} from "../../../redux/movie/actions";
+import MovieForm from "./MovieForm";
 
-function MovieUpdate(props) {
-
+export default function MovieUpdate() {
   const dispatch = useDispatch();
   const { movieID } = useParams();
   const movie = useSelector((state) => getMovieByID(state, movieID));
   const navigate = useNavigate();
 
-  const [title, setTitle] = useState(movie.title);
-  const [duration, setDuration] = useState(movie.duration);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  function handleSubmit(formData) {
     dispatch(updateMovie({
+      ...formData,
       id: movieID,
-      title,
-      duration
     }));
+
     navigate('/admin/movies');
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label className="form-label">Tytuł</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Tytuł"
-            onChange={e => setTitle(e.target.value)}
-            value={title}
-          />
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label">Czas trwania</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Czas trwania"
-            onChange={e => setDuration(e.target.value)}
-            value={duration}
-          />
-        </div>
-
-        <div className="mb-3 text-end">
-          <button type="submit" className="btn btn-success">Zapisz!</button>
-        </div>
-      </form>
+      <MovieForm onHandleSubmit={handleSubmit} title={movie.title} duration={movie.duration}/>
     </>
   );
 }
-
-export default MovieUpdate;
 
