@@ -19,15 +19,15 @@ export default function MovieForm(props) {
     const validationErrors = [];
 
     if (title === '') {
-      validationErrors.push('Należy podać tytuł.');
+      validationErrors.push('Pole tytuł jest wymagane.');
     }
 
     if (duration <= 0) {
-      validationErrors.push('Czas trwania musi być większa niż 0 minut.')
+      validationErrors.push('Pole czas trwania musi być większa niż 0 minut.')
     }
 
     if (checkIfIsInteger(duration)) {
-      validationErrors.push('Czas trwania musi być liczbą całkowitą.')
+      validationErrors.push('Pole czas trwania musi być liczbą całkowitą.')
     }
 
     setErrors(validationErrors);

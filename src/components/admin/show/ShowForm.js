@@ -3,6 +3,7 @@ import {useState} from "react";
 import {useStore} from "react-redux";
 import {getReservedTimeSlotsForScreenRoomID} from "../../../redux/show/selectors";
 import 'moment/locale/pl';
+import FormErrors from "../../common/show/FormErrors";
 
 export default function ShowForm(props) {
   const {movies, screenRooms} = props;
@@ -61,18 +62,9 @@ export default function ShowForm(props) {
     return validationErrors.length === 0;
   }
 
-  const errorsList = errors.map((error, index) => <li key={index}>{error}</li>)
-
   return (
     <form onSubmit={handleSubmit} onChange={(e) => setErrors([])}>
-
-      {errors.length > 0 &&
-        <div className={'alert alert-danger'}>
-          <ul>
-            {errorsList}
-          </ul>
-        </div>
-      }
+      <FormErrors errors={errors} />
 
       <div className="mb-3">
         <label className="form-label">Data godzina</label>
@@ -102,7 +94,7 @@ export default function ShowForm(props) {
         </select>
       </div>
 
-      <div className="mb-3">
+      <div className="mb-3 text-end">
         <button type="submit" className="btn btn-success">Dodaj!</button>
       </div>
     </form>
