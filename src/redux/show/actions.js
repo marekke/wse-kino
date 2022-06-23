@@ -2,6 +2,9 @@ import {createAction} from "@reduxjs/toolkit";
 import {generateIDForEntity} from "../../utils/IDGeneratator";
 import {getMovieByID} from "../movie/selectors";
 import {getScreenRoomByID} from "../screenRoom/selectors";
+import {getShowByID, getShows} from "./selectors";
+import {hasShowBoughtTickets, isShowCurrentlyPlaying} from "./helpers";
+import {addError} from "../app/actions";
 
 export const showCreated = createAction('show/created');
 export const showRemoved = createAction('show/removed');
@@ -37,6 +40,18 @@ export const createShow = (payload) => (dispatch, getState) => {
 }
 
 export const removeShow = (showID) => (dispatch, getState) => {
+  const show = getShowByID(getState(), showID);
+
+  if (isShowCurrentlyPlaying(show)) {
+    dispatch(addError('Podany seans jest aktualnie wyświetlany.'));
+    return;
+  }
+
+  if (hasShowBoughtTickets(show)) {
+    dispatch(addError('Podany seans posiada wykupione bilety.'));
+    return;
+  }
+
   dispatch(showRemoved(showID));
 }
 
