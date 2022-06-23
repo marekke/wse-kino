@@ -44,6 +44,22 @@ export const getActiveShowsByMovieID = (state, movieID) => {
   return result;
 }
 
+export const getActiveShowsByScreenRoomID = (state, screenRoomID) => {
+  const result = [];
+
+  Object.values(state.show).forEach(show => {
+    if (show.screenRoomID !== screenRoomID) {
+      return;
+    }
+
+    if (moment().isBefore(show.dateEnd)) {
+      result.push(show);
+    }
+  })
+
+  return result;
+}
+
 
 export const getShowsByMovieID = (state, movieID) =>
   getShows(state).filter(show => show.movieID === parseInt(movieID));

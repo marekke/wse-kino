@@ -1,10 +1,16 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {getScreenRooms} from "../../../redux/screenRoom/selectors";
 import {Pencil, Trash} from "react-bootstrap-icons";
+import {removeScreenRoom as removeScreenRoomAction} from "../../../redux/screenRoom/actions";
 
 export default function ScreenRoomIndex() {
   const screenRooms = useSelector(getScreenRooms);
+  const dispatch = useDispatch();
+
+  function removeScreenRoom(screenRoomID) {
+    dispatch(removeScreenRoomAction(screenRoomID))
+  }
 
   const screenRoomsElements = screenRooms.map((screenRoom, index) =>
     <tr key={screenRoom.id}>
@@ -17,7 +23,7 @@ export default function ScreenRoomIndex() {
       </td>
       <td className={'text-end'}>
         <Link to={`update/${screenRoom.id}`} className={'me-2'}><Pencil/></Link>
-        <Trash role={'button'} className={'text-danger'}/>
+        <Trash role={'button'} className={'text-danger'} onClick={() => removeScreenRoom(screenRoom.id)}/>
       </td>
     </tr>
   );
