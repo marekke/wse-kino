@@ -18,7 +18,7 @@ function AdminLayout() {
   return (
     <>
       <header className="navbar navbar-dark sticky-top bg-danger flex-md-nowrap p-0 shadow">
-        <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Kino - Admin</a>
+        <Link className={'navbar-brand col-md-3 col-lg-2 me-0 px-3'} to={"/admin"}>Kino - Admin</Link>
         <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -34,9 +34,7 @@ function AdminLayout() {
             <div className="position-sticky pt-3">
               <ul className="nav flex-column">
                 <li className="nav-item">
-                  <a className="nav-link" aria-current="page" href="#">
-                    Pulpit
-                  </a>
+                  <NavLink className={'nav-link'} to={"/admin"}>Pulpit</NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink to="/admin/movies" className="nav-link">Filmy</NavLink>
@@ -56,19 +54,19 @@ function AdminLayout() {
               className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
               <h1 className="h2">{getRouteName(location.pathname)}</h1>
             </div>
-            <Error />
+            <Error/>
             <div>
               <Routes>
-                <Route path='/' element={<AdminIndex />} />
-                <Route path='movies' element={<MovieIndex />} />
-                <Route path='movies/create' element={<MovieCreate />} />
-                <Route path='movies/update/:movieID' element={<MovieUpdate />} />
-                <Route path='screen-rooms' element={<ScreenRoomIndex />} />
-                <Route path='screen-rooms/create' element={<ScreenRoomCreate />} />
-                <Route path='screen-rooms/update/:screenRoomID' element={<ScreenRoomUpdate />} />
-                <Route path='shows' element={<ShowIndex />} />
-                <Route path='shows/create' element={<ShowCreate />} />
-                <Route path='shows/view/:showID' element={<ShowView />} />
+                <Route path='/' element={<AdminIndex/>}/>
+                <Route path='movies' element={<MovieIndex/>}/>
+                <Route path='movies/create' element={<MovieCreate/>}/>
+                <Route path='movies/update/:movieID' element={<MovieUpdate/>}/>
+                <Route path='screen-rooms' element={<ScreenRoomIndex/>}/>
+                <Route path='screen-rooms/create' element={<ScreenRoomCreate/>}/>
+                <Route path='screen-rooms/update/:screenRoomID' element={<ScreenRoomUpdate/>}/>
+                <Route path='shows' element={<ShowIndex/>}/>
+                <Route path='shows/create' element={<ShowCreate/>}/>
+                <Route path='shows/view/:showID' element={<ShowView/>}/>
               </Routes>
             </div>
           </main>
