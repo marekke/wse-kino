@@ -1,7 +1,8 @@
 import {ArrowRightShort, Clock} from "react-bootstrap-icons";
 import moment from "moment/moment";
+import PropTypes from "prop-types";
 
-export default function ShowDetail(props) {
+function ShowDetail(props) {
   const {show} = props;
 
   const dateStart = moment(show.dateStart);
@@ -31,3 +32,9 @@ export default function ShowDetail(props) {
     </div>
   );
 }
+
+ShowDetail.propTypes = {
+  show: PropTypes.object
+}
+
+export default ShowDetail;

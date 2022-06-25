@@ -1,7 +1,8 @@
 import moment from "moment/moment";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
-export default function DailyRepertoire(props) {
+function DailyRepertoire(props) {
   const {repertoire, date} = props;
 
   const today = moment(date).isSame(new Date(), "day");
@@ -42,3 +43,10 @@ export default function DailyRepertoire(props) {
     </div>
   );
 }
+
+DailyRepertoire.propTypes = {
+  repertoire: PropTypes.object,
+  date: PropTypes.string
+}
+
+export default DailyRepertoire;

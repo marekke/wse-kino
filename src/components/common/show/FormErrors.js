@@ -1,4 +1,6 @@
-export default function FormErrors(props) {
+import PropTypes from "prop-types";
+
+function FormErrors(props) {
   const {errors} = props;
 
   if (errors === undefined || errors.length === 0) {
@@ -17,3 +19,9 @@ export default function FormErrors(props) {
     </>
   );
 }
+
+FormErrors.propTypes = {
+  errors: PropTypes.array
+}
+
+export default FormErrors;

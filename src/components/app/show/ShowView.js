@@ -40,7 +40,7 @@ export default function ShowView(props) {
       ],
       customUI: (props) => <ConfirmCustomUI
         {...props}
-        message={<BuyTicketConfirmMessage show={show} seatID={seatID} />}
+        message={<BuyTicketConfirmMessage show={show} seatID={parseInt(seatID)} />}
       />
     });
   }

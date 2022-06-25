@@ -1,9 +1,11 @@
+import PropTypes from "prop-types";
+
 const seatCardStyle = {
   'fontSize': '30px',
   'fontWeight': 'bold',
 };
 
-export default function SeatsGridView(props) {
+function SeatsGridView(props) {
   const {seats, onSeatClick} = props;
 
   function handleSeatClick(seatID) {
@@ -35,3 +37,10 @@ export default function SeatsGridView(props) {
     </div>
   );
 }
+
+SeatsGridView.propTypes = {
+  seats: PropTypes.object,
+  onSeatClick: PropTypes.func
+};
+
+export default SeatsGridView;

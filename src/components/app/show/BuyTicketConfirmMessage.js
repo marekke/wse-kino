@@ -1,4 +1,6 @@
-export default function BuyTicketConfirmMessage(props) {
+import PropTypes from "prop-types";
+
+function BuyTicketConfirmMessage(props) {
   const {show, seatID} = props;
 
   return (
@@ -22,3 +24,10 @@ export default function BuyTicketConfirmMessage(props) {
       </>
   );
 }
+
+BuyTicketConfirmMessage.propTypes = {
+  show: PropTypes.object,
+  seatID: PropTypes.number
+};
+
+export default BuyTicketConfirmMessage;
