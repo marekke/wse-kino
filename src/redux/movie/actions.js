@@ -10,10 +10,12 @@ export const movieRemoved = createAction('movie/removed');
 
 export const createMovie = (payload) => (dispatch, getState) => {
   payload.id = generateIDForEntity('movie', getState());
+  payload.duration = parseInt(payload.duration);
   dispatch(movieCreated(payload));
 }
 
 export const updateMovie = (payload) => (dispatch) => {
+  payload.duration = parseInt(payload.duration);
   dispatch(movieCreated(payload));
 }
 

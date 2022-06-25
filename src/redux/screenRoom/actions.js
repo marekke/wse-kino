@@ -9,10 +9,16 @@ export const screenRoomRemoved = createAction('screenRoom/removed');
 
 export const createScreenRoom = (payload) => (dispatch, getState) => {
   payload.id = generateIDForEntity('screenRoom', getState());
+  payload.number = parseInt(payload.number);
+  payload.capacity = parseInt(payload.capacity);
+
   dispatch(screenRoomCreated(payload));
 }
 
 export const updateScreenRoom = (payload) => (dispatch, getState) => {
+  payload.number = parseInt(payload.number);
+  payload.capacity = parseInt(payload.capacity);
+
   dispatch(screenRoomCreated(payload));
 }
 
