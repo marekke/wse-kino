@@ -1,8 +1,10 @@
 import {useState} from "react";
 import {checkIfIsInteger} from "../../../utils/Helper";
 import FormErrors from "../../common/show/FormErrors";
+import PropTypes from "prop-types";
+import MovieForm from "../movie/MovieForm";
 
-export default function ScreenRoomForm(props) {
+function ScreenRoomForm(props) {
   const [number, setNumber] = useState(props.number || 0);
   const [capacity, setCapacity] = useState(props.capacity || 0);
   const [errors, setErrors] = useState([]);
@@ -69,3 +71,9 @@ export default function ScreenRoomForm(props) {
     </form>
   );
 }
+
+MovieForm.propTypes = {
+  onHandleSubmit: PropTypes.func,
+}
+
+export default ScreenRoomForm;

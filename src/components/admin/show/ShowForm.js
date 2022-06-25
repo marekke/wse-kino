@@ -4,8 +4,9 @@ import {useStore} from "react-redux";
 import {getReservedTimeSlotsForScreenRoomID} from "../../../redux/show/selectors";
 import 'moment/locale/pl';
 import FormErrors from "../../common/show/FormErrors";
+import PropTypes from "prop-types";
 
-export default function ShowForm(props) {
+function ShowForm(props) {
   const {movies, screenRooms} = props;
 
   const [dateTime, setDateTime] = useState('');
@@ -100,3 +101,9 @@ export default function ShowForm(props) {
     </form>
   );
 }
+
+ShowForm.propTypes = {
+  onHandleSubmit: PropTypes.func,
+}
+
+export default ShowForm;

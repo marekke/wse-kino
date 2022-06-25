@@ -1,8 +1,9 @@
 import {useState} from "react";
 import {checkIfIsInteger} from "../../../utils/Helper";
 import FormErrors from "../../common/show/FormErrors";
+import PropTypes from "prop-types";
 
-export default function MovieForm(props) {
+function MovieForm(props) {
   const [title, setTitle] = useState(props.title || '');
   const [duration, setDuration] = useState(props.duration || 0);
   const [errors, setErrors] = useState([]);
@@ -67,3 +68,9 @@ export default function MovieForm(props) {
     </form>
   );
 }
+
+MovieForm.propTypes = {
+  onHandleSubmit: PropTypes.func,
+}
+
+export default MovieForm;
