@@ -12,6 +12,9 @@ const combinedReducers = combineReducers({
 });
 
 const rootReducer = (state, action) => {
+  if (action.type === 'epp/exampleData/generated') {
+    return combinedReducers(undefined, action);
+  }
   return combinedReducers(state, action);
 }
 
