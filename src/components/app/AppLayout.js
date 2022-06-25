@@ -12,7 +12,7 @@ function AppLayout() {
     <>
       <nav className="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
         <div className="container-fluid">
-          <Link to="/" className={'navbar-brand'}>Kino WSE</Link>
+          <Link to={'/'} className={'navbar-brand bg-transparent shadow-none'}>Kino WSE</Link>
 
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02"
                   aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
