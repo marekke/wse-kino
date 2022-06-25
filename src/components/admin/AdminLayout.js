@@ -10,6 +10,7 @@ import ShowCreate from "./show/ShowCreate";
 import Error from "../app/Error";
 import ShowView from "./show/ShowView";
 import {getRouteName} from "../../router/Helper";
+import AdminIndex from "./AdminIndex";
 
 function AdminLayout() {
   const location = useLocation();
@@ -58,6 +59,7 @@ function AdminLayout() {
             <Error />
             <div>
               <Routes>
+                <Route path='/' element={<AdminIndex />} />
                 <Route path='movies' element={<MovieIndex />} />
                 <Route path='movies/create' element={<MovieCreate />} />
                 <Route path='movies/update/:movieID' element={<MovieUpdate />} />
